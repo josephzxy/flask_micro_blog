@@ -9,7 +9,18 @@
     {% endif %}
 </head>
 <body>
-    <div>Blog : <a href="/index">index</a></div>
+    <div>Blog : <a href="{{ url_for('index') }}">index</a></div>
+    <div>Login : <a href="{{ url_for('login') }}">index</a></div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ur>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ur>
+    {% endif %}
+    {% endwith%}
     {% block content %}
     {% endblock %}
 </body>

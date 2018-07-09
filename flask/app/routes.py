@@ -4,6 +4,8 @@ from app.forms import LoginForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
+from datetime import datetime
+from app import db
 
 @app.route('/')
 @app.route('/index')
@@ -50,3 +52,20 @@ def logout():
 @login_required
 def test():
     return render_template('base.html')
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = [
+        {'author':user, 'body':'test Post 1'},
+        {'author':user, 'body':'test Post 2'}
+    ]
+
+    return render_template('user.html', user=user, posts=posts)
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()

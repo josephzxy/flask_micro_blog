@@ -5,7 +5,7 @@ use flask_blog_db;
 
 grant 
 index, create, select, update, insert, delete,
-REFERENCES 
+REFERENCES, alter 
 on flask_blog_db.* 
 to 'flask'@'localhost' identified by 'flask';
 

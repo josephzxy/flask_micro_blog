@@ -38,6 +38,19 @@ class User(UserMixin, db.Model):
         # digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/6b541a0a667f5558208aad7309c22936'
 
+    def follow(self, user):
+        if not self.is_following(user):
+            self.followed.append(user)
+            return self
+    
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.followed.remove(user)
+            return self
+    
+    def is_following(self, user):
+        return self.followed.filter(followers.c.followed_id == user.id).count > 0
+
     def __repr__(self):
         return '<User: {}>'.format(self.username)
     

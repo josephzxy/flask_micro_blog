@@ -53,6 +53,7 @@ def logout():
 def test():
     return render_template('base.html')
 
+# user homepage
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -85,6 +86,37 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
+
+@app.route('/follow/<username>')
+@login_required
+def follow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('User {} not found'.format(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('You cannot follow your self!')
+        return redirect(url_for('user', username=username))
+    current_user.follow(user)
+    db.session.commit()
+    flash('You are following {}!'.format(username))
+    return redirect(url_for('user', username=username))
+
+@app.route('/unfollow/<username>')
+@login_required
+def unfollow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash('User {} not found'.format(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('You cannot unfollow your self!')
+        return redirect(url_for('user', username=username))
+    current_user.follow(user)
+    db.session.commit()
+    flash('You are not following {}!'.format(username))
+    return redirect(url_for('user', username=username))
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -100,3 +132,4 @@ def register():
         return redirect(url_for('login'))
     # when GET
     return render_template('register.html', title='Register', form=form)
+

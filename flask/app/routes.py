@@ -10,6 +10,8 @@ from app import db
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
+    if not current_user.is_authenticated:
+        return render_template('index.html', title='Welcome to MicroBlog!', form=None, posts=None)
     form = PostForm()
     if form.validate_on_submit():
         post = Post(body=form.post_content.data, author=current_user)
@@ -18,15 +20,7 @@ def index():
         flash('Your post is now live!')
         return redirect(url_for('index'))
 
-    # posts = [{
-    #     'author':{'username':'liu'},
-    #     'body': 'no1'
-    # },{
-    #     'author':{'username':'dachuan'},
-    #     'body': 'No2'
-    # }]
     posts = current_user.get_followed_posts().all()
-
     return render_template('index.html', title='Home Page', form=form, posts=posts)
 
 
@@ -153,3 +147,9 @@ def post():
         flash('Post')
         return redirect(url_for('index'))
     return render_template('post.html', title='Post', form=form)
+
+@app.route('/explore')
+@login_required
+def explore():
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    return render_template('index.html', title='Explore', posts=posts)

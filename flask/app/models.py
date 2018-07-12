@@ -9,6 +9,14 @@ from hashlib import md5
 def load_user(id):
     return User.query.get(int(id))
 
+followers = db.Table('followers',
+    # follower: the user's follower
+    db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
+    # followed: the user followed whom
+    db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
+)
+
+
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
@@ -62,15 +70,6 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User: {}>'.format(self.username)
     
-
-followers = db.Table('followers',
-    # follower: the user's follower
-    db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
-    # followed: the user followed whom
-    db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
-)
-
-
 class Post(db.Model):
     __tablename__ = 'post'
     id = db.Column(db.Integer, primary_key=True)

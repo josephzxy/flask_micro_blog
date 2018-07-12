@@ -85,7 +85,7 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
 
-@app.route('/register', method=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
@@ -95,7 +95,7 @@ def register():
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
         db.session.add(user)
-        db.seesion.commit()
+        db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     # when GET

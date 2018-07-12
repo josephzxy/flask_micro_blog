@@ -31,7 +31,7 @@ class Config:
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    POSTS_PER_PAGE = 3
+    POSTS_PER_PAGE = 25
 
 config = Config()
 print(config.SQLALCHEMY_DATABASE_URI)

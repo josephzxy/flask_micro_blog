@@ -3,11 +3,6 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextA
 from wtforms.validators import DataRequired, Length, ValidationError, Email, EqualTo
 from app.models import User
 
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(message='Pls input username')])
-    password = PasswordField('Password', validators=[DataRequired(message='Pls input password')])
-    remember_me = BooleanField('remember me')
-    submit = SubmitField('Login')
 
 class EditProfileForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(message='Pls input username')])
@@ -24,23 +19,6 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError('Please use a different username.')
-
-class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    repeat_password = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Register')
-
-    def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
-        if user is not None:
-            raise ValidationError('Please use a different username.')
-    
-    def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
-        if user is not None:
-            raise ValidationError('Please use a different email address.')
 
 class PostForm(FlaskForm):
     post_content = TextAreaField('Say something', validators=[DataRequired(), Length(min=0, max=140)])

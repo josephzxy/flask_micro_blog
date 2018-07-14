@@ -92,7 +92,7 @@ def unfollow(username):
     if user == current_user:
         flash('You cannot unfollow your self!')
         return redirect(url_for('main.user', username=username))
-    current_user.follow(user)
+    current_user.unfollow(user)
     db.session.commit()
     flash('You are not following {}!'.format(username))
     return redirect(url_for('main.user', username=username))

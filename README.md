@@ -43,7 +43,7 @@ $ flask run
 `myblog.py` is under `flask_micro_blog/flask/`
 
 After running it, you will see
-[](https://raw.githubusercontent.com/josephzxy/pic/master/Screen%20Shot%202018-07-19%20at%202.57.49%20PM.png)
+![](https://raw.githubusercontent.com/josephzxy/pic/master/Screen%20Shot%202018-07-19%20at%202.57.49%20PM.png)
 
 ## Running the tests
 

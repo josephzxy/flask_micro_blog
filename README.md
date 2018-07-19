@@ -33,41 +33,21 @@ python_version = "3.6"
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+This project can be run by
 
 ```
-Give the example
+$ export FLASK_APP=myblog.py 
+$ flask run
 ```
 
-And repeat
+`myblog.py` is under `flask_micro_blog/flask/`
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+After running it, you will see
+[](https://raw.githubusercontent.com/josephzxy/pic/master/Screen%20Shot%202018-07-19%20at%202.57.49%20PM.png)
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+To be continued
 
 ## Deployment
 

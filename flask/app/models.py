@@ -5,6 +5,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from hashlib import md5
 
+from flask import url_for
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -42,9 +44,13 @@ class User(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    def avatar(self, size):
-        # digest = md5(self.email.lower().encode('utf-8')).hexdigest()
-        return 'https://www.gravatar.com/avatar/6b541a0a667f5558208aad7309c22936'
+    def avatar(self):
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        # return 'https://www.gravatar.com/avatar/6b541a0a667f5558208aad7309c22936'
+        #return 'https://raw.githubusercontent.com/josephzxy/pic/master/example_github_avatar.png'
+
+        # 根据用户电邮的md5 来生成该用户头像的绝对路径
+        return url_for('api.user_avatar', email_md5=digest)
 
     def follow(self, user):
         if not self.is_following(user):

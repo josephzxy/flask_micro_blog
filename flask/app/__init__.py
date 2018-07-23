@@ -6,7 +6,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 
 db = SQLAlchemy()
-migrate = Migrate()
+migrate = Migrate(db=db)
 login = LoginManager()
 login.login_view = 'auth.login'
 login.login_message = 'Please log in to access this page.'
@@ -33,6 +33,9 @@ def create_app(config_class=Config):
 
     from app.auth import bp as auth_bp
     app.register_blueprint(auth_bp, url_prefix='/auth')# all url in auth will be like http://localhost:5000/auth/...
+
+    from app.api import bp as api_bp
+    app.register_blueprint(api_bp, url_prefix='/api')
 
     from app.main import bp as main_bp
     app.register_blueprint(main_bp)

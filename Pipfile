@@ -11,6 +11,7 @@ flask-migrate = "*"
 flask-sqlalchemy = "*"
 flask-login = "*"
 pytest = "*"
+opencv-python = "*"
 
 [dev-packages]
 

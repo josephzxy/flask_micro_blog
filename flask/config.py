@@ -33,5 +33,8 @@ class Config:
 
     POSTS_PER_PAGE = 5
 
+    # user avatar dir
+    USER_AVATAR_DIR = '/Users/joseph/work/server/flask_microblog/avatar/'
+
 config = Config()
 print(config.SQLALCHEMY_DATABASE_URI)

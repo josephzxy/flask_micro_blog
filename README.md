@@ -6,27 +6,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 Pipenv is used to manage virtual env and packages.
 
-Pipfile
-```
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-
-[packages]
-flask = "*"
-flask-wtf = "*"
-pymysql = "*"
-flask-migrate = "*"
-flask-sqlalchemy = "*"
-flask-login = "*"
-pytest = "*"
-
-[dev-packages]
-
-[requires]
-python_version = "3.6"
-```
+Please refer to `Pipfile` for prerequistes.
 
 ### Installing
 

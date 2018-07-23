@@ -1,12 +1,13 @@
-from flask import redirect, render_template, url_for, request, flash
+from flask import redirect, render_template, url_for, request, flash, current_app
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
+from hashlib import md5
 
 from app import db
 from app.models import User
 from app.auth import bp
 from app.auth.forms import LoginForm, RegistrationForm
-
+from app.util.github_avatar_generator import GithubAvatarGenerator
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -44,6 +45,12 @@ def register():
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
         user.set_password(form.password.data)
+        avatar_path = "{}{}.png".format(
+            current_app.config['USER_AVATAR_DIR'],
+            md5(form.email.data.lower().encode('utf-8')).hexdigest()
+        )
+        avatar_generator = GithubAvatarGenerator()
+        avatar_generator.save_avatar(avatar_path)
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')

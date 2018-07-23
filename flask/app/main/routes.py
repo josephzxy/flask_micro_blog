@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, current_app
+from flask import render_template, flash, redirect, url_for, request, current_app, Response
 from app.main import bp as main_bp
 from app.main.forms import EditProfileForm, PostForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -121,3 +121,4 @@ def explore():
     return render_template(
         'index.html', title='Explore', posts=posts.items,
         next_url=next_url, prev_url=prev_url)
+        

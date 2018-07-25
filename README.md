@@ -4,6 +4,8 @@
 
 flask_micro_blog is a microblog platform based on flask.
 
+[Demo on AWS EC2](54.95.179.201)
+
 Basic Features:
 - User can register, login, edit their profile, post microbblogs, explore new friends, follow other users, see microblogs post by their friends.
 - Flask-bootstrap is used as front-end framework.
@@ -32,10 +34,6 @@ $ flask run
 After running it, you will see
 
 <img src="https://raw.githubusercontent.com/josephzxy/pic/master/Screen%20Shot%202018-07-19%20at%202.57.49%20PM.png" height=300>
-
-## Running the tests
-
-To be continued
 
 ## Deployment
 

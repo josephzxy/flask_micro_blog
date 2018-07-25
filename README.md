@@ -1,8 +1,18 @@
 # flask_micro_blog
+
+<img src="https://raw.githubusercontent.com/josephzxy/pic/master/Screen%20Shot%202018-07-25%20at%209.46.50%20AM.png" height=500>
+
+flask_micro_blog is a microblog platform based on flask.
+
+Basic Features:
+- User can register, login, edit their profile, post microbblogs, explore new friends, follow other users, see microblogs post by their friends.
+- Flask-bootstrap is used as front-end framework.
+
+Advanced Features:
+- User will have their own random Github-style default avatar generated using opencv-python.
+ 
+
 ## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 Pipenv is used to manage virtual env and packages.
 

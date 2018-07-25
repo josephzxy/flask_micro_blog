@@ -4,7 +4,7 @@
 
 flask_micro_blog is a microblog platform based on flask.
 
-[Demo on AWS EC2](54.95.179.201)
+[Demo on AWS EC2](http://ec2-54-95-179-201.ap-northeast-1.compute.amazonaws.com:80)
 
 Basic Features:
 - User can register, login, edit their profile, post microbblogs, explore new friends, follow other users, see microblogs post by their friends.

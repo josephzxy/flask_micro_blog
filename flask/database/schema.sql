@@ -4,8 +4,7 @@ create database flask_blog_db;
 use flask_blog_db;
 
 grant 
-index, create, select, update, insert, delete,
-REFERENCES, alter 
+all privileges
 on flask_blog_db.* 
 to 'flask'@'localhost' identified by 'flask';
 

@@ -35,11 +35,11 @@ After running it, you will see
 
 <img src="https://raw.githubusercontent.com/josephzxy/pic/master/Screen%20Shot%202018-07-19%20at%202.57.49%20PM.png" height=300>
 
-## Deployment
+## Running Test
 
-- [on Linux](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux)
-- [on Heroku](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xviii-deployment-on-heroku)
-- [on Docker Container](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers)
+All test cases are under `test/` and are based on [pytest](https://docs.pytest.org/en/latest/)
+
+Test cases can be run by running `pytest` command at the root of project folder.
 
 ## Built With
 

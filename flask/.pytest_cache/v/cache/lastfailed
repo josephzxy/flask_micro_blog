@@ -1,0 +1,4 @@
+{
+  "test/test_user_model.py": true,
+  "test/test_user_model.py::TestUserModel::()::test_avatar": true
+}

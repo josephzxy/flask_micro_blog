@@ -1,32 +1,24 @@
 # flask_micro_blog
+
+<img src="https://raw.githubusercontent.com/josephzxy/pic/master/Screen%20Shot%202018-07-25%20at%209.46.50%20AM.png" height=500>
+
+flask_micro_blog is a microblog platform based on flask.
+
+[Demo on AWS EC2](http://ec2-54-95-179-201.ap-northeast-1.compute.amazonaws.com:80)
+
+Basic Features:
+- User can register, login, edit their profile, post microbblogs, explore new friends, follow other users, see microblogs post by their friends.
+- Flask-bootstrap is used as front-end framework.
+
+Advanced Features:
+- User will have their own random Github-style default avatar generated using opencv-python.
+ 
+
 ## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 Pipenv is used to manage virtual env and packages.
 
-Pipfile
-```
-[[source]]
-url = "https://pypi.org/simple"
-verify_ssl = true
-name = "pypi"
-
-[packages]
-flask = "*"
-flask-wtf = "*"
-pymysql = "*"
-flask-migrate = "*"
-flask-sqlalchemy = "*"
-flask-login = "*"
-pytest = "*"
-
-[dev-packages]
-
-[requires]
-python_version = "3.6"
-```
+Please refer to `Pipfile` for prerequistes.
 
 ### Installing
 
@@ -43,15 +35,11 @@ After running it, you will see
 
 <img src="https://raw.githubusercontent.com/josephzxy/pic/master/Screen%20Shot%202018-07-19%20at%202.57.49%20PM.png" height=300>
 
-## Running the tests
-
-To be continued
-
 ## Deployment
 
-[on Linux](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux)
-[on Heroku](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xviii-deployment-on-heroku)
-[on Docker Container](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers)
+- [on Linux](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux)
+- [on Heroku](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xviii-deployment-on-heroku)
+- [on Docker Container](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xix-deployment-on-docker-containers)
 
 ## Built With
 
@@ -63,6 +51,3 @@ To be continued
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
-
-* This project is an outcome of [Flask Mega Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)

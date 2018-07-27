@@ -46,10 +46,6 @@ class User(UserMixin, db.Model):
 
     def avatar(self):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
-        # return 'https://www.gravatar.com/avatar/6b541a0a667f5558208aad7309c22936'
-        #return 'https://raw.githubusercontent.com/josephzxy/pic/master/example_github_avatar.png'
-
-        # 根据用户电邮的md5 来生成该用户头像的绝对路径
         return url_for('api.user_avatar', email_md5=digest)
 
     def follow(self, user):
@@ -67,9 +63,8 @@ class User(UserMixin, db.Model):
 
     def get_followed_posts(self):
         followed = Post.query.join(
-            followers, 
-            (followers.c.followed_id == Post.user_id)
-        ).filter(followers.c.follower_id == self.id)
+            followers, (followers.c.followed_id == Post.user_id)).filter(
+                followers.c.follower_id == self.id)
         own = Post.query.filter_by(user_id=self.id)
         return followed.union(own).order_by(Post.timestamp.desc())
 
